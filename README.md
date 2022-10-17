@@ -10,7 +10,7 @@ A scoreboard implementation for a football match between a **Black** team and **
 * YK04 Wireless 4 Channel 315Mhz Remote Control - [Microless UAE](https://uae.microless.com/product/generic-wireless-4-channel-315mhz-remote-control-kits-receiver-module-for-arduino-4-channel-315mhz/)
 * Two 5v power sources, for the display panel and the Arduino.
 
-##🧑‍💻 Software Requirements
+## 🧑‍💻 Software Requirements
 * Arduino IDE - https://www.arduino.cc/en/software/
 * Remote Control Library - https://github.com/YuriiSalimov/YK04_Module
 * Unit Test Library - https://github.com/bxparks/AUnit
