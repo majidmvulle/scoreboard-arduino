@@ -20,16 +20,16 @@ A scoreboard implementation for a football match between a **Black** team and **
 
 
 ## 📄 Documentation & Circuit Diagram
-- Waveshare RGB LED Matrix power connection
+- Waveshare RGB LED Matrix power connection - [Link](https://learn.adafruit.com/32x16-32x32-rgb-led-matrix/powering)
 
 <img alt="Waveshare RGB LED Matrix and Arduino Mega" src="https://cdn-learn.adafruit.com/assets/assets/000/002/941/original/led_matrix_power-cable.jpg"/>
 
-- Waveshare RGB LED Matrix and Arduino Mega
+- Waveshare RGB LED Matrix and Arduino Mega - [Link](https://www.waveshare.com/wiki/RGB-Matrix-P3-64x64#Hardware_Connection)
 
 <img alt="Waveshare RGB LED Matrix and Arduino Mega" src="https://www.waveshare.com/w/upload/4/41/Arduino-Mega-hw-connect-RGB-Matrix02.jpg"/>
 
 
-- YK04 Module 
+- YK04 Module - [Link](https://github.com/YuriiSalimov/YK04_Module)
 
 <img alt="YK04 Module" src="https://github.com/YuriiSalimov/YK04_Module/blob/master/CircuitDiagram.png"/>
 
@@ -39,6 +39,12 @@ A scoreboard implementation for a football match between a **Black** team and **
 - After checking out the repo, open the Arduino IDE and open the file `scoreboard.ino`.
 - Connect your hardware according to the circuit diagrams above.
 - Run it!
+
+
+## 🎭 Demo
+
+
+[![Watch the video](demo.png)](http://www.youtube.com/watch?v=T-D1KVIuvjA)
 
 
 ## 🔗 Useful links
