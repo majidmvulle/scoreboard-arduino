@@ -1,8 +1,8 @@
-#include "RGBmatrixPanel.h"
-#include "Team.h"
-
 #include <string.h>
 #include <YK04_Module.h>
+
+#include "RGBmatrixPanel.h"
+#include "Team.h"
 
 // RGB Matrix Panel 64x64
 #define CLK 11
@@ -230,7 +230,7 @@ void setup() {
   matrix.setTextWrap(false);
   screenClear();
 
-  delay(500);
+  delay(500); //wait for panel to be ready, avoids LED flashing
 }
 
 void loop() {

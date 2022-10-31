@@ -1,6 +1,7 @@
-#include "Timer.h"
 #include <stdio.h>
 #include <stdlib.h>
+
+#include "Timer.h"
 
 void Timer::reset() {
   paused = true;
