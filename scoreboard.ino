@@ -34,52 +34,18 @@ const long updateInterval = 1000;
 const long remoteDelayInterval = 998;
 unsigned long currentMillis;
 unsigned long previousMillis = 0;
-char timerText[7];
-String scoreText;
-
-
-RGBmatrixPanel matrix(A, B, C, D, E, CLK, LAT, OE, false, 64);
-
-YK04_Module *remoteModule;
 
 Timer *timer;
-
 Team *leftTeam;
 Team *rightTeam;
 
-
-void readRemoteModule() {
-  remoteModule->multipleRead();
-
-  if (currentMillis - previousMillis < remoteDelayInterval) {
-    return;
-  }
-
-  if (remoteModule->isA() && remoteModule->isB()) {
-    timer->pause();
-  } else if (remoteModule->isC() && remoteModule->isD()) {
-    timer->reset();
-    leftTeam->resetScore();
-    rightTeam->resetScore();
-  } else {
-    //scores
-    if (remoteModule->isA()) {
-      leftTeam->addScore();
-    } else if (remoteModule->isB()) {
-      rightTeam->addScore();
-    } else if (remoteModule->isC()) {
-      leftTeam->subtractScore();
-    } else if (remoteModule->isD()) {
-      rightTeam->subtractScore();
-    }
-  }
-}
-
+YK04_Module *remoteModule;
+RGBmatrixPanel matrix(A, B, C, D, E, CLK, LAT, OE, false, 64);
 
 void printTimerOnRGBMatrix() {
   const int8_t *timerMinutesList = timer->getMinutesList();
   const int8_t *timerSecondsList = timer->getSecondsList();
-  
+
   const int16_t charWidth = 5;
   const int16_t charHeight = 8;
   const int16_t charPadding = 1;
@@ -88,11 +54,11 @@ void printTimerOnRGBMatrix() {
   int16_t charsMinutes = maxCharsMinutes - 1;
   int16_t minutesX = matrixFirstRowX;
 
-  if(timerMinutesList[0] > 0){
+  if (timerMinutesList[0] > 0) {
     minutesX -= 6;
     charsMinutes++;
   }
-    
+
   const int16_t dotSeparatorX = minutesX + (charWidth + charPadding) * charsMinutes;
   const int16_t secondsX = minutesX + ((charWidth + charPadding) * (charsMinutes + 1));
 
@@ -108,15 +74,15 @@ void printTimerOnRGBMatrix() {
   }
 
   if (minutesList[1] != timerMinutesList[1]) {
-    clearCoordinates(minutesX + ((charWidth + charPadding) * (charsMinutes/maxCharsMinutes)), matrixFirstRowY, charWidth + charPadding, charHeight);
+    clearCoordinates(minutesX + ((charWidth + charPadding) * (charsMinutes / maxCharsMinutes)), matrixFirstRowY, charWidth + charPadding, charHeight);
   }
 
   if (minutesList[2] != timerMinutesList[2]) {
-    clearCoordinates(minutesX + ((charWidth + charPadding) * (charsMinutes/maxCharsMinutes + 1)), matrixFirstRowY, charWidth + charPadding, charHeight);
+    clearCoordinates(minutesX + ((charWidth + charPadding) * (charsMinutes / maxCharsMinutes + 1)), matrixFirstRowY, charWidth + charPadding, charHeight);
   }
 
-  if(timerMinutesList[0] > 0){
-    matrix.print(timerMinutesList[0]);  
+  if (timerMinutesList[0] > 0) {
+    matrix.print(timerMinutesList[0]);
   }
 
   matrix.print(timerMinutesList[1]);
@@ -158,31 +124,31 @@ void printScoresOnRGBMatrix() {
 
   int8_t charLeftWidth = 12;
   int8_t charRightWidth = 12;
-  
 
-  if(teamLeftTeamScore > 9){
-    leftTeamX-=10;
+
+  if (teamLeftTeamScore > 9) {
+    leftTeamX -= 10;
     charLeftWidth *= 2;
   }
 
-  if(teamRightTeamScore > 9){
-    rightTeamX-=2;
+  if (teamRightTeamScore > 9) {
+    rightTeamX -= 2;
     charRightWidth *= 2;
   }
 
-  if(leftTeamScore != teamLeftTeamScore){
+  if (leftTeamScore != teamLeftTeamScore) {
     leftTeamScore = teamLeftTeamScore;
     clearCoordinates(leftTeamX, matrixSecondRowY, charLeftWidth, charHeight);
   }
-  
-  if(rightTeamScore != teamRightTeamScore){
+
+  if (rightTeamScore != teamRightTeamScore) {
     rightTeamScore = teamRightTeamScore;
     clearCoordinates(rightTeamX, matrixSecondRowY, charRightWidth, charHeight);
   }
 
   matrix.setTextColor(matrix.Color333(1, 1, 1));
   matrix.setTextSize(2);
-  
+
   matrix.setCursor(leftTeamX, matrixSecondRowY);
   matrix.print(leftTeamScore);
 
@@ -193,12 +159,12 @@ void printScoresOnRGBMatrix() {
   matrix.print(rightTeamScore);
 }
 
-void printTeamsOnRGBMatrix(){
+void printTeamsOnRGBMatrix() {
   const int16_t dotsX = 26;
   matrix.setTextColor(matrix.Color333(1, 1, 1));
   matrix.setTextSize(1);
   matrix.setTextWrap(true);
-  
+
   matrix.setCursor(matrixThirdRowX, matrixThirdRowY);
   matrix.print(String(leftTeam->getName()));
 
@@ -219,9 +185,34 @@ void screenClear() {
   clearCoordinates(0, 0, matrix.width(), matrix.height());
 }
 
-void setup() {
-  Serial.begin(115200);
+void readRemoteModule() {
+  remoteModule->multipleRead();
 
+  if (currentMillis - previousMillis < remoteDelayInterval) {
+    return;
+  }
+
+  if (remoteModule->isA() && remoteModule->isB()) {
+    timer->pause();
+  } else if (remoteModule->isC() && remoteModule->isD()) {
+    timer->reset();
+    leftTeam->resetScore();
+    rightTeam->resetScore();
+  } else {
+    //scores
+    if (remoteModule->isA()) {
+      leftTeam->addScore();
+    } else if (remoteModule->isB()) {
+      rightTeam->addScore();
+    } else if (remoteModule->isC()) {
+      leftTeam->subtractScore();
+    } else if (remoteModule->isD()) {
+      rightTeam->subtractScore();
+    }
+  }
+}
+
+void setup() {
   timer = new Timer();
 
   char *leftTeamName = new char;
@@ -251,18 +242,9 @@ void loop() {
   if (currentMillis - previousMillis >= updateInterval) {
     previousMillis = currentMillis;
 
-    sprintf(timerText, "%02d:%02d", timer->getMinutes(), timer->getSeconds());
-    scoreText = "Score: Left(" + String(leftTeam->getName()) + ") => " + String(leftTeam->getScore()) + " :  Right(" + rightTeam->getName() + ") => " + rightTeam->getScore() + "";
-
-    // debugging only
-    Serial.println(timerText);
-    Serial.println(scoreText);
-
-    // print to matrix display
     printTimerOnRGBMatrix();
   }
 
   printScoresOnRGBMatrix();
   printTeamsOnRGBMatrix();
-
 }

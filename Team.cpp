@@ -23,7 +23,7 @@ void Team::addScore() {
 
   score += 1;
 
-  if(score > maxScore){
+  if (score > maxScore) {
     score = maxScore;
   }
 }

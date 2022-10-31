@@ -29,14 +29,6 @@ void Timer::advance(long currentMillis, long previousMillis) {
       seconds++;
     }
 
-    if (seconds % 10 == 1) {
-      secondsPrev10th = seconds - 1;
-    }
-
-    if (minutes % 10 == 1) {
-      minutesPrev10th = minutes = 1;
-    }
-
     int secondsIndex = sizeof(secondsList) / sizeof(int8_t) - 1;
     int minutesIndex = sizeof(minutesList) / sizeof(int8_t) - 1;
 
@@ -54,7 +46,7 @@ void Timer::advance(long currentMillis, long previousMillis) {
       minutesList[0] = 9;
       minutesList[1] = 9;
       minutesList[2] = 9;
-      
+
       //we've reached the end.
       pause();
 
@@ -104,12 +96,4 @@ int Timer::getSeconds() {
   sprintf(&seconds[1], "%d", secondsList[1]);
 
   return atoi(seconds);
-}
-
-int Timer::getPrevious10Seconds() {
-  return secondsPrev10th;
-}
-
-int Timer::getPrevious10Minutes() {
-  return minutesPrev10th;
 }
