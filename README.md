@@ -26,7 +26,7 @@ A scoreboard implementation for a football match between a **Black** team and **
 
 - Waveshare RGB LED Matrix and Arduino Mega
 
-<img alt="Waveshare RGB LED Matrix and Arduino Mega" src="https://www.waveshare.com/wiki/RGB-Matrix-P3-64x64#/media/File:Arduino-Mega-hw-connect-RGB-Matrix02.jpg"/>
+<img alt="Waveshare RGB LED Matrix and Arduino Mega" src="https://www.waveshare.com/w/upload/4/41/Arduino-Mega-hw-connect-RGB-Matrix02.jpg"/>
 
 
 - YK04 Module 
