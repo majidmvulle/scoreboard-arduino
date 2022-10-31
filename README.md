@@ -19,7 +19,7 @@ A scoreboard implementation for a football match between a **Black** team and **
 * Unit Test Library - https://github.com/bxparks/AUnit
 
 
-## 📄 Documentation & Circuit Diagram
+## 📄 Documentation & Circuit Diagrams
 - Waveshare RGB LED Matrix power connection - [Link](https://learn.adafruit.com/32x16-32x32-rgb-led-matrix/powering)
 
 <img alt="Waveshare RGB LED Matrix and Arduino Mega" src="https://cdn-learn.adafruit.com/assets/assets/000/002/941/original/led_matrix_power-cable.jpg"/>
