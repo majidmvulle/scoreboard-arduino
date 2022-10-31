@@ -12,12 +12,27 @@ A scoreboard implementation for a football match between a **Black** team and **
 
 ## 🧑‍💻 Software Requirements
 * Arduino IDE - https://www.arduino.cc/en/software/
-* Remote Control Library - https://github.com/YuriiSalimov/YK04_Module
+* Adafruit Bus IO Library - https://github.com/adafruit/Adafruit_BusIO
+* Adafruit GFX Library - https://github.com/adafruit/Adafruit-GFX-Library
+* Adafruit RGB Matrix Panel library - https://github.com/adafruit/RGB-matrix-Panel [a custom version - supporting a 64x64 panel is included with this codebase]
+* YK04 Controller Library - https://github.com/YuriiSalimov/YK04_Module
 * Unit Test Library - https://github.com/bxparks/AUnit
 
 
 ## 📄 Documentation & Circuit Diagram
-- @TODO
+- Waveshare RGB LED Matrix power connection
+
+<img alt="Waveshare RGB LED Matrix and Arduino Mega" src="https://cdn-learn.adafruit.com/assets/assets/000/002/941/original/led_matrix_power-cable.jpg"/>
+
+- Waveshare RGB LED Matrix and Arduino Mega
+
+<img alt="Waveshare RGB LED Matrix and Arduino Mega" src="https://www.waveshare.com/wiki/RGB-Matrix-P3-64x64#/media/File:Arduino-Mega-hw-connect-RGB-Matrix02.jpg"/>
+
+
+- YK04 Module 
+
+<img alt="YK04 Module" src="https://github.com/YuriiSalimov/YK04_Module/blob/master/CircuitDiagram.png"/>
+
 
 
 ## 🔧 Installation
