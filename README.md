@@ -44,7 +44,7 @@ A scoreboard implementation for a football match between a **Black** team and **
 ## 🎭 Demo
 
 
-[![Watch the video](demo.png)](http://www.youtube.com/watch?v=T-D1KVIuvjA)
+[![Watch the video](demo.png)](https://www.youtube.com/shorts/wUx_zdTx2Pw)
 
 
 ## 🔗 Useful links
