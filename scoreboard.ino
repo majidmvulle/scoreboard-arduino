@@ -65,7 +65,6 @@ void printTimerOnRGBMatrix() {
   static int8_t minutesList[3] = { 0, 0, 0 };
   static int8_t secondsList[2] = { 0, 0 };
 
-  matrix.setTextColor(matrix.Color333(1, 1, 1));
   matrix.setTextSize(1);
   matrix.setCursor(minutesX, matrixFirstRowY);
 
@@ -88,7 +87,10 @@ void printTimerOnRGBMatrix() {
   matrix.print(timerMinutesList[1]);
   matrix.print(timerMinutesList[2]);
 
-  clearCoordinates(dotSeparatorX, matrixFirstRowY, charWidth + charPadding, charHeight);
+  if (!timer->isPaused()) {
+    clearCoordinates(dotSeparatorX, matrixFirstRowY, charWidth + charPadding, charHeight);
+  }
+  
   matrix.print(":");
 
   if (secondsList[0] != timerSecondsList[0]) {
@@ -97,7 +99,10 @@ void printTimerOnRGBMatrix() {
 
   matrix.print(timerSecondsList[0]);
 
-  clearCoordinates(secondsX + charWidth, matrixFirstRowY, charWidth + charPadding, charHeight);
+  if (secondsList[1] != timerSecondsList[1]) {
+    clearCoordinates(secondsX + charWidth, matrixFirstRowY, charWidth + charPadding, charHeight);
+  }
+
   matrix.print(timerSecondsList[1]);
 
 
@@ -146,7 +151,6 @@ void printScoresOnRGBMatrix() {
     clearCoordinates(rightTeamX, matrixSecondRowY, charRightWidth, charHeight);
   }
 
-  matrix.setTextColor(matrix.Color333(1, 1, 1));
   matrix.setTextSize(2);
 
   matrix.setCursor(leftTeamX, matrixSecondRowY);
@@ -161,7 +165,6 @@ void printScoresOnRGBMatrix() {
 
 void printTeamsOnRGBMatrix() {
   const int16_t dotsX = 26;
-  matrix.setTextColor(matrix.Color333(1, 1, 1));
   matrix.setTextSize(1);
   matrix.setTextWrap(true);
 
@@ -226,11 +229,12 @@ void setup() {
 
   remoteModule = new YK04_Module(A_PIN, B_PIN, C_PIN, D_PIN);
 
-  matrix.begin();
+  matrix.begin();  
+  matrix.setTextColor(matrix.Color333(1, 1, 1));
   matrix.setTextWrap(false);
   screenClear();
 
-  delay(500); //wait for panel to be ready, avoids LED flashing
+  delay(500);  //wait for panel to be ready, avoids LED flashing
 }
 
 void loop() {

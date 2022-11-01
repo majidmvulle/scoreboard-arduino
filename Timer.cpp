@@ -15,6 +15,8 @@ void Timer::reset() {
 }
 
 void Timer::advance(long currentMillis, long previousMillis) {
+  bool shouldEnd = false;
+
   if (paused) {
     return;
   }
@@ -43,19 +45,22 @@ void Timer::advance(long currentMillis, long previousMillis) {
       }
     }
 
-    if (minutes > maxMinutes) {
-      minutesList[0] = 9;
-      minutesList[1] = 9;
-      minutesList[2] = 9;
+    if (minutes >= maxMinutes) {
+      minutes = maxMinutes;
+      shouldEnd = true;
+    }
+
+    while (minutes) {
+      minutesList[minutesIndex--] = minutes % 10;
+      minutes /= 10;
+    }
+
+    if (shouldEnd) {
+      secondsList[0] = 5;
+      secondsList[1] = 9;
 
       //we've reached the end.
       pause();
-
-    } else {
-      while (minutes) {
-        minutesList[minutesIndex--] = minutes % 10;
-        minutes /= 10;
-      }
     }
   }
 }

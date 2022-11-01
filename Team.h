@@ -9,7 +9,6 @@ private:
   char* name;
   const int8_t maxScore = 99;
 
-
 public:
   Team(char* aName, Timer* timer);
 
