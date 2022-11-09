@@ -26,7 +26,7 @@ A scoreboard implementation for a football match between a **Black** team and **
 
 - Waveshare RGB LED Matrix and ESP-32S - [Link](https://www.waveshare.com/wiki/RGB-Matrix-P3-64x64#Hardware_Connection_2)
 
-<img alt="Waveshare RGB LED Matrix and ESP-32S" src="https://www.waveshare.com/wiki/RGB-Matrix-P3-64x64#/media/File:RGB-Matrix-P4-64x32_ESP32.jpg"/>
+<img alt="Waveshare RGB LED Matrix and ESP-32S" src="https://www.waveshare.com/w/upload/5/54/RGB-Matrix-P4-64x32_ESP32.jpg"/>
 
 
 - YK04 Module - [Link](https://github.com/YuriiSalimov/YK04_Module)
